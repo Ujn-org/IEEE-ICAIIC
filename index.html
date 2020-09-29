@@ -2,6 +2,28 @@
 <head> 
 <link href="style.css" rel="stylesheet">
 </head>
+<script >
+	function setdata(){
+		var unixTimestamp = parseInt(new Date().getTime()/1000);
+		commonTime = unixTimestamp;
+		// var meet_day, meet_hour,meet_minutes, meet_secodes, love_day, love_hour, love_minutes,love_secodes = count_time(commonTime);
+		var meet_day = parseInt((commonTime-1599976200)/(24*60*60));
+		var meet_hour = parseInt(((commonTime-1599976200)%(24*60*60))/(60*60));
+		var meet_minutes = parseInt((((commonTime-1599976200)%(24*60*60))%(60*60))/60);
+		var meet_secodes = parseInt((((commonTime-1599976200)%(24*60*60))%(60*60))%60);
+		var love_day = parseInt((commonTime-1600432200)/(24*60*60));
+		var love_hour = parseInt(((commonTime-1600432200)%(24*60*60))/(60*60));
+		var love_minutes = parseInt((((commonTime-1600432200)%(24*60*60))%(60*60))/60);
+		var love_secodes = parseInt((((commonTime-1600432200)%(24*60*60))%(60*60))%60);
+		document.getElementById("day").innerHTML= love_day;
+		document.getElementById("hour").innerHTML= love_hour;
+		document.getElementById("mint").innerHTML= love_minutes;
+		document.getElementById("seco").innerHTML= love_secodes;		
+	}
+	window.onload=function(){
+		setInterval(setdata,1000);
+	}
+</script>
 <style>
 body {
   font-family: '楷体','Raleway', sans-serif;
@@ -436,6 +458,8 @@ li:nth-child(2) {
 
 </font>	
 </div>
-<font size="+30"><br><h1 >我们，在一起<br/>一周了</h1>
+<font size="+30"><br><h1 >我们，在一起<br/>
+	<span id="day"></span>天 <span id="hour"></span>小时 <span id="mint"></span>分 <span id="seco"></span>秒; 
+	</h1>
 </body>
 </html>
